@@ -9,3 +9,7 @@ export {
   PageProgressionParser,
 } from './src/field-types/page-progression';
 export { StringParser } from './src/field-types/string';
+export {
+  FieldParserInterface,
+  FieldParserRawValue,
+} from './src/field-parser-interface';
