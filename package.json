@@ -11,7 +11,6 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "build": "tsc",
     "prepare": "tsc",
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
@@ -20,10 +19,7 @@
     "test": "tsc && yarn run lint && yarn run circular && wtr --coverage",
     "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\""
   },
-  "dependencies": {
-    "lit-element": "^2.2.1",
-    "lit-html": "^1.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@open-wc/eslint-config": "^4.2.0",
     "@open-wc/testing": "^2.0.0",
@@ -56,6 +52,11 @@
       "@typescript-eslint/no-unused-vars": [
         "error"
       ],
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": [
+        "error"
+      ],
+      "class-methods-use-this": "off",
       "import/no-unresolved": "off",
       "import/extensions": [
         "warn",
