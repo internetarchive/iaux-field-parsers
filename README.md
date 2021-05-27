@@ -2,13 +2,22 @@
 
 # Internet Archive Field Parsers
 
-Parsers for Internet Archive metadata fields.
+Parsers to convert strings from Internet Archive API responses to their native javascript equivalents.
 
-Each parser has a single public method:
+Each parser implements the `FieldParserInterface`:
 ```
-parseValue(rawValue: FieldParserRawValue): T | undefined
+export type FieldParserRawValue = string | number | boolean;
+
+export interface FieldParserInterface<T> {
+  /**
+   * Parse the raw value and return a value of type T or undefined if unparseable
+   *
+   * @param rawValue T | undefined
+   */
+  parseValue(rawValue: FieldParserRawValue): T | undefined;
+}
 ```
-where `FieldParserRawValue` is `string | number | boolean`. It is responsible for parsing the input and returning the appropriate value or `undefined`.
+They are responsible for parsing the input and returning the appropriate value or `undefined`.
 
 ## Usage
 
