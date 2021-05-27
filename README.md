@@ -1,27 +1,37 @@
-[![Build Status](https://travis-ci.com/internetarchive/iaux-your-webcomponent.svg?branch=master)](https://travis-ci.com/internetarchive/iaux-your-webcomponent) [![codecov](https://codecov.io/gh/internetarchive/iaux-your-webcomponent/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-your-webcomponent)
+[![Build Status](https://travis-ci.com/internetarchive/iaux-field-parsers.svg?branch=master)](https://travis-ci.com/internetarchive/iaux-field-parsers) [![codecov](https://codecov.io/gh/internetarchive/iaux-field-parsers/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-field-parsers)
 
-# Internet Archive Typescript WebComponent Template
+# Internet Archive Field Parsers
 
-This is a base template for creating Typescript WebComponents. It is based off of the [Open WebComponents generator](https://open-wc.org/docs/development/generator/) with some IA-specific customizations and some development niceities.
+Parsers for Internet Archive metadata fields.
+
+Each parser has a single public method:
+```
+parseValue(rawValue: FieldParserRawValue): T | undefined
+```
+where `FieldParserRawValue` is `string | number | boolean`. It is responsible for parsing the input and returning the appropriate value or `undefined`.
 
 ## Usage
 
-1. Click the "Use this Template" button in GitHub to create a new repository based on this one.
-2. Clone your new repo and update the things below:
-
-### Things to update in your copy
-1. Remove this section
-2. Search for the strings `your-webcomponent` and `YourWebComponent` and those are most of the spots that need to be updated.
-3. `README.md` (this file). Update the readme in general, but also the badge URLs
-4. `package.json` Update the name and description
-5. Rename the `your-webcomponent.ts` and its associated `.test` file
-6. Update `.travis.yml` with the proper secure key. See the [Travis docs](https://blog.travis-ci.com/2014-03-13-slack-notifications/) for more information.
-
-## Local Demo with `web-dev-server`
-```bash
-yarn start
+Instantiate a parser or use the shared instance:
 ```
-To run a local development server that serves the basic demo located in `demo/index.html`
+const parser = new BooleanParser()
+parser.parse('true') => true
+
+BooleanParser.shared.parse('false') => false
+```
+
+See tests for more usage examples.
+
+## Available Parsers:
+
+1. `Boolean`
+2. `Byte` - a number in bytes
+3. `Date` - parses the various Internet Archive date formats
+4. `Duration` - Parses `hh:mm:ss.ms` and `ss.ms` formats to seconds
+5. `MediaType` - Internet Archive media types
+6. `Number`
+7. `PageProgression` - Internet Archive page progression (right to left, left to right)
+8. `String`
 
 ## Testing with Web Test Runner
 To run the suite of Web Test Runner tests, run
