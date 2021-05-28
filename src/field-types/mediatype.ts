@@ -22,7 +22,10 @@ export class MediaTypeParser implements FieldParserInterface<MediaType> {
 
   /** @inheritdoc */
   parseValue(rawValue: FieldParserRawValue): MediaType | undefined {
-    switch (rawValue) {
+    if (typeof rawValue !== 'string') return undefined;
+
+    const lowercased = rawValue.toLowerCase();
+    switch (lowercased) {
       case 'audio':
         return MediaType.Audio;
       case 'collection':

@@ -18,7 +18,8 @@ export class PageProgressionParser
   parseValue(rawValue: FieldParserRawValue): PageProgression | undefined {
     if (typeof rawValue !== 'string') return undefined;
 
-    switch (rawValue) {
+    const lowercased = rawValue.toLowerCase();
+    switch (lowercased) {
       case 'rl':
         return PageProgression.RightToLeft;
       case 'lr':
