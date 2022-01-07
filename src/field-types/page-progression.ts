@@ -3,10 +3,7 @@ import {
   FieldParserRawValue,
 } from '../field-parser-interface';
 
-export enum PageProgression {
-  RightToLeft = 'rl',
-  LeftToRight = 'lr',
-}
+export type PageProgression = 'rl' | 'lr';
 
 export class PageProgressionParser
   implements FieldParserInterface<PageProgression> {
@@ -17,15 +14,6 @@ export class PageProgressionParser
   /** @inheritdoc */
   parseValue(rawValue: FieldParserRawValue): PageProgression | undefined {
     if (typeof rawValue !== 'string') return undefined;
-
-    const lowercased = rawValue.toLowerCase();
-    switch (lowercased) {
-      case 'rl':
-        return PageProgression.RightToLeft;
-      case 'lr':
-        return PageProgression.LeftToRight;
-      default:
-        return undefined;
-    }
+    return rawValue as PageProgression;
   }
 }

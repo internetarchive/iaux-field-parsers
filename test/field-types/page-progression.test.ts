@@ -1,19 +1,11 @@
 import { expect } from '@open-wc/testing';
-import {
-  PageProgression,
-  PageProgressionParser,
-} from '../../src/field-types/page-progression';
+import { PageProgressionParser } from '../../src/field-types/page-progression';
 
 describe('PageProgressionParser', () => {
   it('can parse page progression', async () => {
     const parser = new PageProgressionParser();
-    expect(parser.parseValue('rl')).to.equal(PageProgression.RightToLeft);
-    expect(parser.parseValue('lr')).to.equal(PageProgression.LeftToRight);
-  });
-
-  it('returns undefined for incorrect values', async () => {
-    const parser = new PageProgressionParser();
-    expect(parser.parseValue('boop')).to.be.undefined;
+    expect(parser.parseValue('rl')).to.equal('rl');
+    expect(parser.parseValue('lr')).to.equal('lr');
   });
 
   it('returns undefined for number values', async () => {

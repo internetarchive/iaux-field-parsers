@@ -1,18 +1,19 @@
 import { expect } from '@open-wc/testing';
-import { MediaType, MediaTypeParser } from '../../src/field-types/mediatype';
+import { MediaTypeParser } from '../../src/field-types/mediatype';
 
 describe('MediaTypeParser', () => {
   it('can parse mediatypes', async () => {
     const parser = new MediaTypeParser();
-    expect(parser.parseValue('audio')).to.equal(MediaType.Audio);
-    expect(parser.parseValue('collection')).to.equal(MediaType.Collection);
-    expect(parser.parseValue('data')).to.equal(MediaType.Data);
-    expect(parser.parseValue('etree')).to.equal(MediaType.Etree);
-    expect(parser.parseValue('image')).to.equal(MediaType.Image);
-    expect(parser.parseValue('movies')).to.equal(MediaType.Movies);
-    expect(parser.parseValue('software')).to.equal(MediaType.Software);
-    expect(parser.parseValue('texts')).to.equal(MediaType.Texts);
-    expect(parser.parseValue('web')).to.equal(MediaType.Web);
+    expect(parser.parseValue('account')).to.equal('account');
+    expect(parser.parseValue('audio')).to.equal('audio');
+    expect(parser.parseValue('collection')).to.equal('collection');
+    expect(parser.parseValue('data')).to.equal('data');
+    expect(parser.parseValue('etree')).to.equal('etree');
+    expect(parser.parseValue('image')).to.equal('image');
+    expect(parser.parseValue('movies')).to.equal('movies');
+    expect(parser.parseValue('software')).to.equal('software');
+    expect(parser.parseValue('texts')).to.equal('texts');
+    expect(parser.parseValue('web')).to.equal('web');
   });
 
   it('returns undefined for number values', async () => {
