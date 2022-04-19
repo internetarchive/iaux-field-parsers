@@ -6,17 +6,30 @@ import {
 export class ListParser<T> implements FieldParserInterface<T[]> {
   private parser: FieldParserInterface<T>;
 
-  constructor(parser: FieldParserInterface<T>) {
+  private separators = [',', ';'];
+
+  constructor(
+    parser: FieldParserInterface<T>,
+    options?: {
+      separators?: string[];
+    }
+  ) {
     this.parser = parser;
+    if (options && options.separators) {
+      this.separators = options.separators;
+    }
   }
 
   /** @inheritdoc */
   parseValue(rawValue: FieldParserRawValue): T[] {
     const stringifiedValue = String(rawValue);
     let results: string[] = [];
-    // first try splitting by comma, then by semi-colon
-    results = stringifiedValue.split(',');
-    if (results.length === 1) results = stringifiedValue.split(';');
+
+    for (const separator of this.separators) {
+      results = stringifiedValue.split(separator);
+      if (results.length > 1) break;
+    }
+
     return this.parseListValues(results);
   }
 

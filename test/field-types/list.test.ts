@@ -60,4 +60,18 @@ describe('ListParser', () => {
     const response = parser.parseValue('true, false, true');
     expect(response).to.deep.equal([true, false, true]);
   });
+
+  it('can parse a list of strings with custom separator', async () => {
+    const stringParser = new StringParser();
+    const parser = new ListParser(stringParser, { separators: ['-'] });
+    const response = parser.parseValue('boop - bop - beep');
+    expect(response).to.deep.equal(['boop', 'bop', 'beep']);
+  });
+
+  it('can parse a list of strings with the second custom separator', async () => {
+    const stringParser = new StringParser();
+    const parser = new ListParser(stringParser, { separators: ['-', '|'] });
+    const response = parser.parseValue('boop | bop | beep');
+    expect(response).to.deep.equal(['boop', 'bop', 'beep']);
+  });
 });
