@@ -4,6 +4,7 @@ export { DateParser } from './src/field-types/date';
 export { Duration, DurationParser } from './src/field-types/duration';
 export { MediaType, MediaTypeParser } from './src/field-types/mediatype';
 export { NumberParser } from './src/field-types/number';
+export { ListParser } from './src/field-types/list';
 export {
   PageProgression,
   PageProgressionParser,
