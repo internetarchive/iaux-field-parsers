@@ -74,4 +74,11 @@ describe('ListParser', () => {
     const response = parser.parseValue('boop | bop | beep');
     expect(response).to.deep.equal(['boop', 'bop', 'beep']);
   });
+
+  it('defaults to semicolons before commas since commas are common in some terms', async () => {
+    const stringParser = new StringParser();
+    const parser = new ListParser(stringParser);
+    const response = parser.parseValue('10,000 Maniacs; Boop, Beep, Boop');
+    expect(response).to.deep.equal(['10,000 Maniacs', 'Boop, Beep, Boop']);
+  });
 });

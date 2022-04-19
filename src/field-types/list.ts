@@ -6,7 +6,7 @@ import {
 export class ListParser<T> implements FieldParserInterface<T[]> {
   private parser: FieldParserInterface<T>;
 
-  private separators = [',', ';'];
+  private separators = [';', ','];
 
   constructor(
     parser: FieldParserInterface<T>,
