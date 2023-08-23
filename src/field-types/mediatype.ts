@@ -11,6 +11,7 @@ export type MediaType =
   | 'etree'
   | 'image'
   | 'movies'
+  | 'search'
   | 'software'
   | 'texts'
   | 'web';
