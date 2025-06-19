@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/internetarchive/iaux-field-parsers.svg?branch=master)](https://travis-ci.com/internetarchive/iaux-field-parsers) [![codecov](https://codecov.io/gh/internetarchive/iaux-field-parsers/branch/master/graph/badge.svg)](https://codecov.io/gh/internetarchive/iaux-field-parsers)
+[![Build Status](https://travis-ci.com/internetarchive/iaux-field-parsers.svg?branch=master)](https://travis-ci.com/internetarchive/iaux-field-parsers) [![codecov](https://codecov.io/gh/internetarchive/iaux-field-parsers/branch/main/graph/badge.svg?token=IMK8Q3SCK1)](https://codecov.io/gh/internetarchive/iaux-field-parsers)
 
 # Internet Archive Field Parsers
 
