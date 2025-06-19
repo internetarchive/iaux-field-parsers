@@ -46,9 +46,7 @@ export class DateParser implements FieldParserInterface<Date> {
     // this attempts to detect cases that get parsed as GMT and adjusts accordingly
     const dateWithTimeZone =
       parsedValue.match(/^[0-9]{4}$/) || // just the year, ie `2020`
-      parsedValue.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) || // YYYY-MM-DD format
-      parsedValue.match(/^.*?-[0-9]{2}:[0-9]{2}$/) || // `YYYY-MM-DDTHH:mm:ss-00:00` format
-      parsedValue.match(/^.*?-[0-9]{4}$/); // `YYYY-MM-DDTHH:mm:ss-0000` format
+      parsedValue.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/); // YYYY-MM-DD format
     if (dateWithTimeZone) {
       date = new Date(date.getTime() + date.getTimezoneOffset() * 1000 * 60);
     }

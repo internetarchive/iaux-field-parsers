@@ -48,12 +48,9 @@ describe('DateParser', () => {
     expect(response?.getTime()).to.equal(expected.getTime());
   });
 
-  it('can parse ISO8601 strings', async () => {
+  it('can parse ISO8601 strings without time zones', async () => {
     const parser = new DateParser();
     const response = parser.parseValue('2020-06-20T13:37:15');
-    const response2 = parser.parseValue('2020-06-20T13:37:15Z');
-    const response3 = parser.parseValue('2020-06-20T13:37:15-00:00');
-    const response4 = parser.parseValue('2020-06-20T13:37:15+00:00');
     const expected = new Date();
     expected.setHours(13);
     expected.setMinutes(37);
@@ -63,9 +60,25 @@ describe('DateParser', () => {
     expected.setDate(20);
     expected.setFullYear(2020);
     expect(response?.getTime()).to.equal(expected.getTime());
+  });
+
+  it('can parse ISO8601 strings with explicit time zones', async () => {
+    const parser = new DateParser();
+    const response = parser.parseValue('2020-06-20T13:37:15Z');
+    const response2 = parser.parseValue('2020-06-20T13:37:15-00:00');
+    const response3 = parser.parseValue('2020-06-20T13:37:15+00:00');
+    const expected = new Date();
+    // These date formats must be parsed with respect to UTC
+    expected.setUTCHours(13);
+    expected.setUTCMinutes(37);
+    expected.setUTCSeconds(15);
+    expected.setUTCMilliseconds(0);
+    expected.setUTCMonth(5);
+    expected.setUTCDate(20);
+    expected.setUTCFullYear(2020);
+    expect(response?.getTime()).to.equal(expected.getTime());
     expect(response2?.getTime()).to.equal(expected.getTime());
     expect(response3?.getTime()).to.equal(expected.getTime());
-    expect(response4?.getTime()).to.equal(expected.getTime());
   });
 
   it('can parse "c.a. yyyy" formatted dates', async () => {
