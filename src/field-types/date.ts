@@ -45,8 +45,6 @@ export class DateParser implements FieldParserInterface<Date> {
     // the `Date(string)` constructor parses some strings as GMT and some in the local timezone
     // this attempts to detect cases that get parsed as GMT and adjusts accordingly
     const dateWithTimeZone =
-      parsedValue.indexOf('Z') > -1 || // ISO8601 with GMT timezone
-      parsedValue.indexOf('+') > -1 || // ISO8601 with positive timezone offset
       parsedValue.match(/^[0-9]{4}$/) || // just the year, ie `2020`
       parsedValue.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/) || // YYYY-MM-DD format
       parsedValue.match(/^.*?-[0-9]{2}:[0-9]{2}$/) || // `YYYY-MM-DDTHH:mm:ss-00:00` format
