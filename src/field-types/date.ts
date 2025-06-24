@@ -42,14 +42,14 @@ export class DateParser implements FieldParserInterface<Date> {
       return undefined;
     }
     let date = new Date(parsedValue);
-    // The `Date(string)` constructor parses some strings as GMT and some in the local timezone.
-    // This attempts to detect cases that get parsed as GMT but should be parsed as local.
+    // The `Date(string)` constructor parses some strings as UTC and some in the local timezone.
+    // This attempts to detect cases that get parsed as UTC but should be parsed as local.
     // Note that this does _not_ include cases with an explicit time zone specified, which
     // should generally be parsed as-is and not converted to local time.
-    const dateWithTimeZone =
+    const isUTCTimeZoneInferred =
       parsedValue.match(/^[0-9]{4}$/) || // just the year, ie `2020`
       parsedValue.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/); // YYYY-MM-DD format
-    if (dateWithTimeZone) {
+    if (isUTCTimeZoneInferred) {
       date = new Date(date.getTime() + date.getTimezoneOffset() * 1000 * 60);
     }
     return date;
