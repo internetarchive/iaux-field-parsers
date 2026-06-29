@@ -1,30 +1,30 @@
-import { expect } from '@open-wc/testing';
+import { describe, it, expect } from 'vitest';
 import { MediaTypeParser } from '../../src/field-types/mediatype';
 
 describe('MediaTypeParser', () => {
   it('can parse mediatypes', async () => {
     const parser = new MediaTypeParser();
-    expect(parser.parseValue('account')).to.equal('account');
-    expect(parser.parseValue('audio')).to.equal('audio');
-    expect(parser.parseValue('collection')).to.equal('collection');
-    expect(parser.parseValue('data')).to.equal('data');
-    expect(parser.parseValue('etree')).to.equal('etree');
-    expect(parser.parseValue('image')).to.equal('image');
-    expect(parser.parseValue('movies')).to.equal('movies');
-    expect(parser.parseValue('software')).to.equal('software');
-    expect(parser.parseValue('texts')).to.equal('texts');
-    expect(parser.parseValue('web')).to.equal('web');
+    expect(parser.parseValue('account')).toBe('account');
+    expect(parser.parseValue('audio')).toBe('audio');
+    expect(parser.parseValue('collection')).toBe('collection');
+    expect(parser.parseValue('data')).toBe('data');
+    expect(parser.parseValue('etree')).toBe('etree');
+    expect(parser.parseValue('image')).toBe('image');
+    expect(parser.parseValue('movies')).toBe('movies');
+    expect(parser.parseValue('software')).toBe('software');
+    expect(parser.parseValue('texts')).toBe('texts');
+    expect(parser.parseValue('web')).toBe('web');
   });
 
   it('returns undefined for number values', async () => {
     const parser = new MediaTypeParser();
     const response = parser.parseValue(15);
-    expect(response).to.be.undefined;
+    expect(response).toBeUndefined();
   });
 
   it('returns undefined for boolean values', async () => {
     const parser = new MediaTypeParser();
     const response = parser.parseValue(true);
-    expect(response).to.be.undefined;
+    expect(response).toBeUndefined();
   });
 });
