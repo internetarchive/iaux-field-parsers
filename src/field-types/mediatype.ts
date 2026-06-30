@@ -3,6 +3,11 @@ import {
   FieldParserRawValue,
 } from '../field-parser-interface';
 
+/**
+ * @deprecated Use the `MediaType` type from
+ * `@internetarchive/iaux-item-metadata`, which is paired with a validating
+ * `MediaTypeField`.
+ */
 export type MediaType =
   | 'account'
   | 'audio'
@@ -16,6 +21,10 @@ export type MediaType =
   | 'texts'
   | 'web';
 
+/**
+ * @deprecated Use `MediaTypeField` from `@internetarchive/iaux-item-metadata`,
+ * which validates the value against the allowed set instead of casting.
+ */
 export class MediaTypeParser implements FieldParserInterface<MediaType> {
   // use a shared static instance for performance instead of
   // instantiating a new instance for every use

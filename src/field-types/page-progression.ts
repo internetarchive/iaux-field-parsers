@@ -3,8 +3,18 @@ import {
   FieldParserRawValue,
 } from '../field-parser-interface';
 
+/**
+ * @deprecated Use the `PageProgression` type from
+ * `@internetarchive/iaux-item-metadata`, which is paired with a validating
+ * `PageProgressionField`.
+ */
 export type PageProgression = 'rl' | 'lr';
 
+/**
+ * @deprecated Use `PageProgressionField` from
+ * `@internetarchive/iaux-item-metadata`, which validates the value against the
+ * allowed set instead of casting.
+ */
 export class PageProgressionParser
   implements FieldParserInterface<PageProgression>
 {
