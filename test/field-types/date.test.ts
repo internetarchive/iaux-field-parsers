@@ -1,4 +1,4 @@
-import { expect } from '@open-wc/testing';
+import { describe, it, expect } from 'vitest';
 import { DateParser } from '../../src/field-types/date';
 
 describe('DateParser', () => {
@@ -14,8 +14,8 @@ describe('DateParser', () => {
     expected.setMonth(5);
     expected.setDate(20);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
-    expect(response2?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
+    expect(response2?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse date-time strings', async () => {
@@ -30,8 +30,8 @@ describe('DateParser', () => {
     expected.setMonth(5);
     expected.setDate(20);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
-    expect(response2?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
+    expect(response2?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse date-time strings different string test', async () => {
@@ -45,7 +45,7 @@ describe('DateParser', () => {
     expected.setMonth(8);
     expected.setDate(20);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse ISO8601 strings without time zones', async () => {
@@ -59,7 +59,7 @@ describe('DateParser', () => {
     expected.setMonth(5);
     expected.setDate(20);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse ISO8601 strings with explicit time zones', async () => {
@@ -76,9 +76,9 @@ describe('DateParser', () => {
     expected.setUTCMonth(5);
     expected.setUTCDate(20);
     expected.setUTCFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
-    expect(response2?.getTime()).to.equal(expected.getTime());
-    expect(response3?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
+    expect(response2?.getTime()).toBe(expected.getTime());
+    expect(response3?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse "c.a. yyyy" formatted dates', async () => {
@@ -92,7 +92,7 @@ describe('DateParser', () => {
     expected.setMonth(0);
     expected.setDate(1);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse "ca yyyy" formatted dates', async () => {
@@ -106,7 +106,7 @@ describe('DateParser', () => {
     expected.setMonth(0);
     expected.setDate(1);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
   });
 
   it('can parse "[yyyy]" formatted dates', async () => {
@@ -120,18 +120,18 @@ describe('DateParser', () => {
     expected.setMonth(0);
     expected.setDate(1);
     expected.setFullYear(2020);
-    expect(response?.getTime()).to.equal(expected.getTime());
+    expect(response?.getTime()).toBe(expected.getTime());
   });
 
   it('returns undefined if it is a bad date', async () => {
     const parser = new DateParser();
     const response = parser.parseValue('absjkdvfnskj');
-    expect(response).to.be.undefined;
+    expect(response).toBeUndefined();
   });
 
   it('returns undefined if passed a non-string value', async () => {
     const parser = new DateParser();
     const response = parser.parseValue(123);
-    expect(response).to.be.undefined;
+    expect(response).toBeUndefined();
   });
 });
