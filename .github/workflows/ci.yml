@@ -4,24 +4,26 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v7
-    - uses: actions/setup-node@v6
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: 24.x
+        node-version: latest
 
     - name: Install dependencies
-      run: yarn install && npm i -g codecov
+      run: npm install
 
     - name: Run tests
-      run: yarn run test
+      run: npm run test
 
-    - uses: codecov/codecov-action@v7
+    - name: Upload Codecov reports
+      uses: codecov/codecov-action@v7
       with:
+        fail_ci_if_error: true
         token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true

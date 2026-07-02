@@ -1,6 +1,6 @@
 import {
   FieldParserInterface,
-  FieldParserRawValue,
+  FieldParserRawValue
 } from '../field-parser-interface';
 
 export class ListParser<T> implements FieldParserInterface<T[]> {
