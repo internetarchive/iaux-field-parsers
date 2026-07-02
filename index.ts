@@ -7,10 +7,10 @@ export { NumberParser } from './src/field-types/number';
 export { ListParser } from './src/field-types/list';
 export {
   PageProgression,
-  PageProgressionParser,
+  PageProgressionParser
 } from './src/field-types/page-progression';
 export { StringParser } from './src/field-types/string';
 export {
   FieldParserInterface,
-  FieldParserRawValue,
+  FieldParserRawValue
 } from './src/field-parser-interface';
