@@ -10,8 +10,33 @@ export class DateParser implements FieldParserInterface<Date> {
 
   /** @inheritdoc */
   parseValue(rawValue: FieldParserRawValue): Date | undefined {
-    // try different date parsing
-    return this.parseJSDate(rawValue) || this.parseBracketDate(rawValue);
+    // try different date parsing. Compact all-digit timestamps are matched
+    // first with a strict regex so their result is deterministic; `Date.parse`
+    // behavior on non-ISO strings is implementation-defined across engines.
+    return (
+      this.parseCompactDate(rawValue) ||
+      this.parseJSDate(rawValue) ||
+      this.parseBracketDate(rawValue)
+    );
+  }
+
+  // handles compact all-digit timestamps like `20101106` (YYYYMMDD) and
+  // `20101106063500` (YYYYMMDDHHMMSS), used by fields such as `scandate`. The
+  // digits are interpreted as local time, matching how the YYYY-MM-DD form is
+  // normalized above.
+  private parseCompactDate(rawValue: FieldParserRawValue): Date | undefined {
+    if (typeof rawValue !== 'string') return undefined;
+    const match = rawValue
+      .trim()
+      .match(/^(\d{4})(\d{2})(\d{2})(?:(\d{2})(\d{2})(\d{2}))?$/);
+    if (!match) return undefined;
+    const [, year, month, day, hour = '00', minute = '00', second = '00'] =
+      match;
+    // a `T`-form with no time zone is parsed as local time
+    const date = new Date(
+      `${year}-${month}-${day}T${hour}:${minute}:${second}`
+    );
+    return Number.isNaN(date.getTime()) ? undefined : date;
   }
 
   // handles "[yyyy]" format
