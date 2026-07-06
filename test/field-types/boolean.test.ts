@@ -31,4 +31,22 @@ describe('BooleanParser', () => {
     const response = parser.parseValue(Date());
     expect(response).toBe(true);
   });
+
+  it('parses "yes" as truthy', async () => {
+    const parser = new BooleanParser();
+    expect(parser.parseValue('yes')).toBe(true);
+  });
+
+  it('parses "no" as falsy', async () => {
+    const parser = new BooleanParser();
+    expect(parser.parseValue('no')).toBe(false);
+  });
+
+  it('parses the textual encodings case- and whitespace-insensitively', async () => {
+    const parser = new BooleanParser();
+    expect(parser.parseValue(' YES ')).toBe(true);
+    expect(parser.parseValue('No')).toBe(false);
+    expect(parser.parseValue('FALSE')).toBe(false);
+    expect(parser.parseValue('True')).toBe(true);
+  });
 });
