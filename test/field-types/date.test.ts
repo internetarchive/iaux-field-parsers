@@ -123,6 +123,26 @@ describe('DateParser', () => {
     expect(response?.getTime()).toBe(expected.getTime());
   });
 
+  it('can parse a compact YYYYMMDDHHMMSS timestamp', async () => {
+    const parser = new DateParser();
+    const response = parser.parseValue('20101106063500');
+    // compact timestamps are interpreted as local time
+    const expected = new Date(2010, 10, 6, 6, 35, 0, 0);
+    expect(response?.getTime()).toBe(expected.getTime());
+  });
+
+  it('can parse a compact YYYYMMDD date', async () => {
+    const parser = new DateParser();
+    const response = parser.parseValue('20101106');
+    const expected = new Date(2010, 10, 6, 0, 0, 0, 0);
+    expect(response?.getTime()).toBe(expected.getTime());
+  });
+
+  it('returns undefined for an out-of-range compact date', async () => {
+    const parser = new DateParser();
+    expect(parser.parseValue('20101332')).toBeUndefined();
+  });
+
   it('returns undefined if it is a bad date', async () => {
     const parser = new DateParser();
     const response = parser.parseValue('absjkdvfnskj');
