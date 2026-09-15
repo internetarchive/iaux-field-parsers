@@ -7,19 +7,27 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist",
+    "!dist/demo",
+    "!dist/test",
+    "!dist/vite.config.*",
+    "!dist/vitest.config.*"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"vite\"",
-    "prepare": "rimraf dist && tsc && husky",
-    "build": "tsc",
+    "prepare": "rimraf dist && tsc -p tsconfig.build.json && husky",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
     "lint": "eslint && prettier \"**/*.ts\" --check",
     "format": "eslint . --fix && prettier \"**/*.ts\" --write",
     "circular": "madge --circular --extensions ts .",
     "test": "tsc && npm run lint && npm run circular && vitest run --coverage",
     "test:watch": "vitest",
-    "ghpages:build": "rimraf ghpages && npm run prepare && vite build",
+    "ghpages:build": "rimraf ghpages dist && tsc && vite build",
     "ghpages:publish": "npm run ghpages:prepare -e $(git branch --show-current)",
     "ghpages:prepare": "npm run ghpages:build && touch ghpages/.nojekyll && npm run ghpages:generate",
     "ghpages:generate": "gh-pages -t -d ghpages -m \"Build for $(git log --pretty=format:\"%h %an %ai %s\" -n1) [skip ci]\""
