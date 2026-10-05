@@ -2,7 +2,7 @@
 // with plain Node (ESM import and CommonJS require), the way a consumer
 // without a bundler would.
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -29,7 +29,7 @@ try {
   if (!tarball) throw new Error('npm pack produced no tarball');
 
   const project = join(dir, 'consumer');
-  run('mkdir', ['-p', project]);
+  mkdirSync(project);
   writeFileSync(join(project, 'package.json'), '{"private":true}\n');
   run(
     'npm',
