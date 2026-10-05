@@ -1,7 +1,7 @@
 import {
   FieldParserInterface,
   FieldParserRawValue
-} from '../field-parser-interface';
+} from '../field-parser-interface.js';
 
 export class StringParser implements FieldParserInterface<string> {
   // use a shared static instance for performance instead of

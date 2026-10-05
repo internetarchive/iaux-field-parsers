@@ -1,7 +1,7 @@
 import {
   FieldParserInterface,
   FieldParserRawValue
-} from '../field-parser-interface';
+} from '../field-parser-interface.js';
 
 /**
  * @deprecated Use the `PageProgression` type from

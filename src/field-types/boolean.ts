@@ -1,7 +1,7 @@
 import {
   FieldParserInterface,
   FieldParserRawValue
-} from '../field-parser-interface';
+} from '../field-parser-interface.js';
 
 export class BooleanParser implements FieldParserInterface<boolean> {
   // use a shared static instance for performance instead of

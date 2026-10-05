@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { StringParser } from '../../src/field-types/string';
+import { StringParser } from '../../src/field-types/string.js';
 
 describe('StringParser', () => {
   it('can parse strings', async () => {

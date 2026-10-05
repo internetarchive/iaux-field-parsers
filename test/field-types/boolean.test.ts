@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { BooleanParser } from '../../src/field-types/boolean';
+import { BooleanParser } from '../../src/field-types/boolean.js';
 
 describe('BooleanParser', () => {
   it('can parse string number truthy', async () => {

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { ListParser } from '../../src/field-types/list';
-import { StringParser } from '../../src/field-types/string';
-import { NumberParser } from '../../src/field-types/number';
-import { BooleanParser } from '../../src/field-types/boolean';
+import { ListParser } from '../../src/field-types/list.js';
+import { StringParser } from '../../src/field-types/string.js';
+import { NumberParser } from '../../src/field-types/number.js';
+import { BooleanParser } from '../../src/field-types/boolean.js';
 
 describe('ListParser', () => {
   it('can parse a list of strings with commas', async () => {

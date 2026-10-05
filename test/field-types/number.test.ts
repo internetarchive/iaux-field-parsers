@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { NumberParser } from '../../src/field-types/number';
+import { NumberParser } from '../../src/field-types/number.js';
 
 describe('NumberParser', () => {
   it('can parse int strings', async () => {

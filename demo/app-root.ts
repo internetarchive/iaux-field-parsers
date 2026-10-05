@@ -10,7 +10,7 @@ import {
   NumberParser,
   PageProgressionParser,
   StringParser
-} from '../index';
+} from '../index.js';
 
 /** One parser shown in the results table. */
 interface ParserRow {
