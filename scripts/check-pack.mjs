@@ -59,7 +59,8 @@ try {
     console.log(`${pkg}: ${name} ok`);
   }
 } catch (err) {
-  console.error(err.stderr || err.message);
+  const output = [err.stdout, err.stderr].filter(Boolean).join('\n');
+  console.error(output || err.message);
   process.exitCode = 1;
 } finally {
   rmSync(dir, { recursive: true, force: true });
