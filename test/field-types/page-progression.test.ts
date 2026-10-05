@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PageProgressionParser } from '../../src/field-types/page-progression.js';
+import { PageProgressionParser } from '../../src/field-types/page-progression';
 
 describe('PageProgressionParser', () => {
   it('can parse page progression', async () => {

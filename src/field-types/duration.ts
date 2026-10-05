@@ -1,7 +1,7 @@
 import {
   FieldParserInterface,
   FieldParserRawValue
-} from '../field-parser-interface.js';
+} from '../field-parser-interface';
 
 /**
  * Duration is a number in seconds

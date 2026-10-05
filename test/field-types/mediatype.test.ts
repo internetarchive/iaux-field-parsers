@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { MediaTypeParser } from '../../src/field-types/mediatype.js';
+import { MediaTypeParser } from '../../src/field-types/mediatype';
 
 describe('MediaTypeParser', () => {
   it('can parse mediatypes', async () => {

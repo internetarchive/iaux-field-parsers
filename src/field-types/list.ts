@@ -1,7 +1,7 @@
 import {
   FieldParserInterface,
   FieldParserRawValue
-} from '../field-parser-interface.js';
+} from '../field-parser-interface';
 
 export class ListParser<T> implements FieldParserInterface<T[]> {
   private parser: FieldParserInterface<T>;

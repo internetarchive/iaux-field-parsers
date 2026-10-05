@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ByteParser } from '../../src/field-types/byte.js';
+import { ByteParser } from '../../src/field-types/byte';
 
 describe('ByteParser', () => {
   it('can parse int strings', async () => {

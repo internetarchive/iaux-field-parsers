@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { DurationParser } from '../../src/field-types/duration.js';
+import { DurationParser } from '../../src/field-types/duration';
 
 describe('DurationParser', () => {
   it('can parse mm:ss format', async () => {

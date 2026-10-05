@@ -1,8 +1,8 @@
 import {
   FieldParserInterface,
   FieldParserRawValue
-} from '../field-parser-interface.js';
-import { NumberParser } from './number.js';
+} from '../field-parser-interface';
+import { NumberParser } from './number';
 
 /**
  * A Byte is a unit-specific `number`, in bytes.

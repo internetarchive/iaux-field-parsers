@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { DateParser } from '../../src/field-types/date.js';
+import { DateParser } from '../../src/field-types/date';
 
 describe('DateParser', () => {
   it('can parse date-only strings', async () => {
