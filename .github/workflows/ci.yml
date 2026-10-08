@@ -21,6 +21,9 @@ jobs:
     - name: Run tests
       run: npm run test
 
+    - name: Import the packed package in Node
+      run: npm run test:pack
+
     - name: Upload Codecov reports
       uses: codecov/codecov-action@v7
       with:
