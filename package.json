@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.1",
   "name": "@internetarchive/field-parsers",
   "description": "Field parsers for Internet Archive metadata fields.",
   "author": "Internet Archive",
