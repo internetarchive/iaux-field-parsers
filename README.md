@@ -2,6 +2,8 @@
 
 # Internet Archive Field Parsers
 
+> Moved to [@internetarchive/elements](https://github.com/internetarchive/elements) (`src/services/field-parsers`). New work goes there.
+
 Parsers to convert strings from Internet Archive API responses to their native javascript equivalents.
 
 Each parser implements the `FieldParserInterface`:
